@@ -19,7 +19,16 @@ export function BookDetails({book, setBooks, onBackPress}: {
     }
 
     function stopReading() {
+        setBooks((previousBooks) => previousBooks.map(b => {
+            if (b.id !== book.id) return b
 
+            return {...b,
+                readings: [...b.readings.slice(0, -1), {
+                    ...lastReading,
+                    finalDetails: {endDate: new Date(), endPage: 0}
+                }]
+            }
+        }))
     }
 
     return (
@@ -27,7 +36,6 @@ export function BookDetails({book, setBooks, onBackPress}: {
             {book.readings.map(reading => (
                 <div key={reading.id}>
                     <p>{reading.startDate.toISOString()}</p>
-                    <p>{reading.finalDetails ? reading.finalDetails : 'Reading in progress'}</p>
                 </div>
             ))}
             <h2>{book.title}</h2>
