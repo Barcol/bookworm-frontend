@@ -5,7 +5,7 @@ import {generateId} from './utils'
 export function Dashboard({books, setBooks, setCurrentBookId}: {
     books: Book[],
     setBooks: (books: Book[]) => void,
-    setCurrentBookId: (id: number) => void
+    setCurrentBookId: (id: string) => void
 }) {
     const [bookName, setBookName] = useState('')
 

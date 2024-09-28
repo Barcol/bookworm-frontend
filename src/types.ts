@@ -6,7 +6,7 @@ export type Book = {
 
 export type Reading = {
     id: string,
-    startDate: string,
+    startDate: Date,
     startPage: number,
-    finalDetails: null | {endDate: string, endPage: number}
+    finalDetails: null | {endDate: Date, endPage: number}
 }

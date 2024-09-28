@@ -5,7 +5,7 @@ import {BookDetails} from "./BookDetails.tsx";
 
 function App() {
     const [books, setBooks] = useState<Book[]>([])
-    const [currentBookId, setCurrentBookId] = useState<number | null>(null)
+    const [currentBookId, setCurrentBookId] = useState<string | null>(null)
 
     return (
         <div>
