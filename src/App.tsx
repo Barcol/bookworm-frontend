@@ -5,12 +5,12 @@ import {BookDetails} from "./BookDetails.tsx";
 
 function App() {
     const [books, setBooks] = useState<Book[]>([])
-    const [currentBook, setCurrentBook] = useState<Book | null>(null)
+    const [currentBookId, setCurrentBookId] = useState<number | null>(null)
 
     return (
         <div>
-            {currentBook ? <BookDetails book={currentBook} onBackPress={() => setCurrentBook(null)}/> :
-                <Dashboard books={books} setBooks={setBooks} setCurrentBook={setCurrentBook}/>}
+            {currentBookId ? <BookDetails book={books.find(book => book.id === currentBookId)} setBooks={setBooks} onBackPress={() => setCurrentBookId(null)}/> :
+                <Dashboard books={books} setBooks={setBooks} setCurrentBookId={setCurrentBookId}/>}
         </div>
     )
 }

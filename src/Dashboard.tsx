@@ -1,15 +1,16 @@
 import {useState} from 'react'
 import {Book} from './types'
+import {generateId} from './utils'
 
-export function Dashboard({books, setBooks, setCurrentBook}: {
+export function Dashboard({books, setBooks, setCurrentBookId}: {
     books: Book[],
     setBooks: (books: Book[]) => void,
-    setCurrentBook: (book: Book) => void
+    setCurrentBookId: (id: number) => void
 }) {
     const [bookName, setBookName] = useState('')
 
     function handleBookAdd() {
-        setBooks([...books, {id: books.length, title: bookName}])
+        setBooks([...books, {id: generateId(), title: bookName, readings: []}])
         setBookName('')
     }
 
@@ -18,7 +19,7 @@ export function Dashboard({books, setBooks, setCurrentBook}: {
             <h1>Books</h1>
             <ul>
                 {books.map((book) => (
-                    <button onClick={() => setCurrentBook(book)} key={book.id}>{book.title}</button>
+                    <button onClick={() => {setCurrentBookId(book.id)}} key={book.id}>{book.title}</button>
                 ))}
             </ul>
             <input value={bookName} onChange={e => setBookName(e.target.value)}/>
