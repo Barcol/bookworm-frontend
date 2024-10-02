@@ -2,11 +2,12 @@ import {useState} from 'react'
 import {Book} from './types'
 import {generateId} from './utils'
 
-export function Dashboard({books, setBooks, setCurrentBookId}: {
+type Props = {
     books: Book[],
     setBooks: (books: Book[]) => void,
     setCurrentBookId: (id: string) => void
-}) {
+}
+export default function ({books, setBooks, setCurrentBookId}: Props) {
     const [bookName, setBookName] = useState('')
 
     function handleBookAdd() {
@@ -19,10 +20,10 @@ export function Dashboard({books, setBooks, setCurrentBookId}: {
             <h1>Books</h1>
             <ul>
                 {books.map((book) => (
-                    <button onClick={() => {setCurrentBookId(book.id)}} key={book.id}>{book.title}</button>
+                    <button onClick={() => setCurrentBookId(book.id)} key={book.id}>{book.title}</button>
                 ))}
             </ul>
-            <input value={bookName} onChange={e => setBookName(e.target.value)}/>
+            <input value={bookName} onChange={event => setBookName(event.target.value)}/>
             <button onClick={handleBookAdd}>Add book</button>
         </div>
     )

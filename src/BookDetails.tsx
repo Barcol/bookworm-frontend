@@ -1,14 +1,16 @@
 import {Book} from './types'
 import {generateId} from './utils'
 
-export function BookDetails({book, setBooks, onBackPress}: {
+type Props = {
     book: Book,
     setBooks: (fn: (books: Book[]) => Book[]) => void,
     onBackPress: () => void
-}) {
+}
+
+export default function ({book, setBooks, onBackPress}: Props) {
     const lastReading = book.readings.at(-1)
 
-    function startReading() {
+    function handleStartReading() {
         setBooks((previousBooks) => previousBooks.map(b => {
             if (b.id !== book.id) return b
             const newReading = {id: generateId(), startPage: 0, startDate: new Date(), finalDetails: null}
@@ -18,7 +20,7 @@ export function BookDetails({book, setBooks, onBackPress}: {
         }))
     }
 
-    function stopReading() {
+    function handleStopReading() {
         setBooks((previousBooks) => previousBooks.map(b => {
             if (b.id !== book.id) return b
 
@@ -42,9 +44,9 @@ export function BookDetails({book, setBooks, onBackPress}: {
             <p>ID: {book.id}</p>
 
             {(!lastReading || lastReading.finalDetails)
-                ? <button onClick={startReading}>STAART</button>
-                : <button onClick={stopReading}>FACET MA JUŻ DOŚĆ</button>}
-            <button onClick={() => onBackPress()}>Back</button>
+                ? <button onClick={handleStartReading}>STAART</button>
+                : <button onClick={handleStopReading}>FACET MA JUŻ DOŚĆ</button>}
+            <button onClick={onBackPress}>Back</button>
         </div>
     )
 }

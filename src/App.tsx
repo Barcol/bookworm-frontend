@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {Book} from './types'
-import {Dashboard} from "./Dashboard.tsx";
-import {BookDetails} from "./BookDetails.tsx";
+import Dashboard from "./Dashboard.tsx";
+import BookDetails from "./BookDetails.tsx";
 
 function App() {
     const [books, setBooks] = useState<Book[]>([])
