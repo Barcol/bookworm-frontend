@@ -9,7 +9,7 @@ Ok, there's no actual philosophy behind this project. I just want to learn how t
 
 # Technology stack
 
-Frontend for now uses: React + TypeScript + Vite. 
+Frontend for now uses: React + TypeScript + Vite.
 Backend will be implemented with Ruby on Rails, as I am familiar with it.
 Tests will be written with Jest and Cypress, unless I'll discover they are the same, or something.
 Style of code shall we handled by prettier and eslint, but for now I'm the one in charge.
